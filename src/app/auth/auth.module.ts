@@ -8,20 +8,25 @@ import {reducers} from './store/reducers';
 import {HttpClientModule} from '@angular/common/http';
 import {EffectsModule} from '@ngrx/effects';
 import {RegisterEffect} from './store/effects/register.effect';
+import {BackendErrorMessagesModule} from '../shared/modules/backendErrorMessages/backendErrorMessages.module';
+import {LoginComponent} from './components/login/login.component';
+import {GetCurrentUserEffect} from './store/effects/getCurrentUser.effect';
 
 const routes: Routes = [
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [RegisterComponent, LoginComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     StoreModule.forFeature('auth', reducers),
-    EffectsModule.forFeature([RegisterEffect])
+    EffectsModule.forFeature([RegisterEffect, LoginComponent, GetCurrentUserEffect]),
+    BackendErrorMessagesModule
   ]
 })
 export class AuthModule { }
