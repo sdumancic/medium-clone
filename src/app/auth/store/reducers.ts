@@ -5,6 +5,8 @@ import {CurrentUserInterface} from '../../shared/types/currentUser.interface';
 import {BackendErrorsInterface} from '../../shared/types/backendErrors.interface';
 import {loginAction, loginFailureAction, loginSuccessAction} from './actions/login.action';
 import {getCurrentUserAction, getCurrentUserFailureAction, getCurrentUserSuccessAction} from './actions/getCurrentUser.action';
+import {updateCurrentUserSuccessAction} from './actions/updateCurrentUser.action';
+import {logoutAction} from './actions/sync.action';
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -88,6 +90,19 @@ const authReducer = createReducer(
       isLoading: false,
       isLoggedIn: false,
       currentUser: null
+    })
+  ),
+  on(
+  updateCurrentUserSuccessAction,
+  (state, payload): AuthStateInterface => ({
+    ...state,
+    currentUser: payload.currentUser
+  })
+  ),
+  on(logoutAction, (state): AuthStateInterface => ({
+    ...state,
+    ...initialState,
+    isLoggedIn: false
     })
   )
 );

@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
   apiUrl: 'https://conduit.productionready.io/api',
-  limit: 10
+  limit: 10,
+  username: '12355225',
+  email: '12355225@12355225.com',
+  password: '12355225'
 };
 
 /*

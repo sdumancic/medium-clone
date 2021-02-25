@@ -5,6 +5,8 @@ import {RouterModule} from '@angular/router';
 import {FeedModule} from '../shared/modules/feed/feed.module';
 import {BannerModule} from '../shared/modules/banner/banner.module';
 import {PopularTagsModule} from '../shared/modules/popularTags/popularTags.module';
+import {FeedTogglerComponent} from '../shared/modules/feedToggler/components/feedToggler/feedToggler.component';
+import {FeedTogglerModule} from '../shared/modules/feedToggler/feedToggler.module';
 
 const routes = [
   {path: '', component: GlobalFeedComponent}
@@ -15,7 +17,8 @@ const routes = [
     RouterModule.forChild(routes),
     FeedModule,
     BannerModule,
-    PopularTagsModule],
+    PopularTagsModule,
+  FeedTogglerModule],
   declarations: [
     GlobalFeedComponent
   ]
